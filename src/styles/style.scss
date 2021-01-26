@@ -1,6 +1,6 @@
-$greycolor: #777;
-$selectedColor: #4285f4; //337ab7
-$hoverColor: #d6f1ff;
+$greycolor: #434343;
+$selectedColor: #434343;
+$hoverColor: rgba(254, 202, 45, 0.5);
 
 .calendarContainer {
   position: relative;
@@ -8,10 +8,10 @@ $hoverColor: #d6f1ff;
   -moz-box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  width: 320px;
+  width: 258px;
   margin: auto;
   text-align: center;
-  padding: 15px;
+  padding: 10px;
   background-color: #fff;
 }
 
@@ -34,12 +34,15 @@ $hoverColor: #d6f1ff;
 /* Heading */
 
 .calendarContainer .heading {
-  height: auto;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.calendarContainer .heading > button {
+.calendarContainer .heading .prev,
+.calendarContainer .heading .next {
   background: none;
   margin: 5px 0;
   border: none;
@@ -49,6 +52,24 @@ $hoverColor: #d6f1ff;
   height: 32px;
   cursor: pointer;
 }
+
+.calendarContainer .heading .title {
+  background: none;
+  border: none;
+  border-radius: 5px;
+  justify-content: center;
+  margin: 5px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.calendarContainer .heading .title small {
+  font-size: 10px;
+  color: #ccc;
+}
+
 
 .calendarContainer .heading > button:hover {
   background-color: #f2f2f2;
@@ -67,33 +88,6 @@ $hoverColor: #d6f1ff;
   margin: 0;
 }
 
-.calendarContainer .heading .prev {
-  float: right;
-}
-
-.calendarContainer .heading .next {
-  float: left;
-}
-
-.calendarContainer .heading .title {
-  height: auto;
-  border-radius: 4px;
-  width: auto;
-  margin: 0 5px;
-  border: 1px solid #f7f7f7;
-  text-align: center;
-  display: inline-block;
-  font-weight: normal;
-  padding: 4px 15px 5px 15px;
-  line-height: 1.5;
-  font-size: 1.2em;
-  max-height: none;
-}
-
-.jalaali.calendarContainer .heading .title {
-  padding: 4px 15px 7px 15px;
-}
-
 /* Day wrapper styles */
 
 .calendarContainer .dayWrapper {
@@ -105,18 +99,22 @@ $hoverColor: #d6f1ff;
 
 /* Day wrapper button styles */
 .calendarContainer .dayWrapper button {
+  display: flex;
   border: none;
   background: none;
   outline: none;
   width: 100%;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 1.1em;
+  width: 34px;
+  height: 34px;
+  border-radius: 2px;
+  font-size: .8em;
   padding: 0;
-  line-height: 1.5;
-  padding: 0px 0px 1px 0px;
+  flex-direction: column;
+}
+.calendarContainer .dayWrapper button small {
+  font-size: 0.6em;
+  color: #ccc; 
 }
 
 .jalaali.calendarContainer .dayWrapper button {
@@ -149,7 +147,10 @@ $hoverColor: #d6f1ff;
   padding-bottom: 5px;
   display: flex;
   width: 100%;
-  color: lighten($greycolor, 10%);
+  color: #FFFF;
+  border-radius: 3px;
+  font-size: 8px;
+  background-color: $greycolor;
 }
 
 .calendarContainer .daysOfWeek > div {
@@ -211,11 +212,11 @@ $hoverColor: #d6f1ff;
 /* Selected state of buttons */
 
 .calendarContainer .selected button,
-.calendarContainer .selected button:hover :not([disabled]),
+.calendarContainer .selected button:hover:not([disabled]),
 .calendarContainer .selected button:active,
 .calendarContainer .selected button:focus {
-  background-color: $selectedColor;
-  color: #ffffff;
+  border: 1px solid $selectedColor;
+  color: #000000;
 }
 
 .calendarContainer.jalaali {
@@ -230,6 +231,10 @@ $hoverColor: #d6f1ff;
 
 .time-picker-container {
   margin-bottom: 10;
+}
+
+.range {
+  display: flex;
 }
 
 .time-picker-container > .time-label {
@@ -461,31 +466,31 @@ li.rc-time-picker-panel-select-option-disabled:hover {
 
 .today {
   button {
-    border: 3px solid #4285f4 !important;
+    border: 1px solid rgb(254, 202, 45) !important;
   }
 }
 
 .jalaali.calendarContainer {
   .selectToday {
-    padding: 4px 0 6px 0;
+    padding: 2px 0 4px 0;
   }
 }
 
 .calendarButton {
   display: block;
   width: 100%;
-  background: #4285f4;
-  color: #fff;
+  background: rgb(254, 202, 45);
+  color: $selectedColor;
   outline: none;
   border-radius: 5px;
-  border: 0;
+  border: 1px solid $selectedColor;
   cursor: pointer;
-  padding: 5px 0 7px 0;
+  padding: 3px 0 4px 0;
   transition: 0.2s all ease-in-out;
   transition-property: background;
 
   &:hover {
-    background: darken(#4285f4, 10);
+    background: darken(rgb(254, 202, 45), 10);
   }
 }
 

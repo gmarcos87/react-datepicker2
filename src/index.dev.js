@@ -4,4 +4,5 @@ import DatePicker from './components/DatePicker';
 
 momentJalaali.loadPersian({ dialect: 'persian-modern' });
 export { Calendar } from './components/Calendar';
+export { RangeDatePicker } from './components/RangeDatePicker';
 export default DatePicker;

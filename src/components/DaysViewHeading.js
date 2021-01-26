@@ -28,11 +28,6 @@ export default class Heading extends Component {
 
     return (
       <div className={styles.heading}>
-        <button className={styles.title} onClick={this.handleMonthClick.bind(this)}>
-          {this.props.isGregorian
-            ? month.locale('en').format('MMMM YYYY')
-            : persianNumber(month.locale('fa').format('jMMMM jYYYY'))}
-        </button>
         {this.props.timePicker}
         {!this.props.isGregorian && (
           <React.Fragment>
@@ -43,6 +38,14 @@ export default class Heading extends Component {
               onClick={prevMonth}
               dangerouslySetInnerHTML={rightArrow}
             />
+            <button className={styles.title} onClick={this.handleMonthClick.bind(this)}>
+              <span>
+                {persianNumber(month.locale('fa').format('jMMMM jYYYY'))}
+              </span>
+              <span className={styles.subtitle}>
+                {month.locale('en').format('MMMM YYYY')}
+              </span>
+            </button>
             <button
               type="button"
               title="ماه بعد"
@@ -61,6 +64,14 @@ export default class Heading extends Component {
               onClick={prevMonth}
               dangerouslySetInnerHTML={leftArrow}
             />
+            <button className={styles.title} onClick={this.handleMonthClick.bind(this)}>
+              <span>
+                {month.locale('en').format('MMMM YYYY')}
+              </span>
+              <small>
+                {persianNumber(month.locale('fa').format('jMMMM jYYYY'))}
+              </small>
+            </button>
             <button
               type="button"
               title="next month"

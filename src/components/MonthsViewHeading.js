@@ -31,24 +31,22 @@ export default class MonthsViewHeading extends Component {
 
     return (
       <div className={styles.heading}>
+        <button
+          type="button"
+          title={isGregorian ? 'previous year' : 'سال بعد'}
+          className={styles.next}
+          onClick={isGregorian ? this.props.onPrevYear : this.props.onNextYear}
+          dangerouslySetInnerHTML={isGregorian? leftArrow: rightArrow}
+        />
         <button disabled={disableYearSelector} className={styles.title} onClick={this.handleYearClick.bind(this)}>
           {isGregorian ? year.format(yearFormat) : persianNumber(year.format(yearFormat))}
         </button>
         <button
           type="button"
           title={isGregorian ? 'next year' : 'سال قبل'}
-          style={styles.navButton}
           className={styles.prev}
           onClick={isGregorian ? this.props.onNextYear : this.props.onPrevYear}
-          dangerouslySetInnerHTML={rightArrow}
-        />
-        <button
-          type="button"
-          title={isGregorian ? 'previous year' : 'سال بعد'}
-          style={styles.navButton}
-          className={styles.next}
-          onClick={isGregorian ? this.props.onPrevYear : this.props.onNextYear}
-          dangerouslySetInnerHTML={leftArrow}
+          dangerouslySetInnerHTML={isGregorian? rightArrow: leftArrow}
         />
       </div>
     );
